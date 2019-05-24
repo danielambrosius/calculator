@@ -14,10 +14,17 @@ const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 const functionButtons = document.querySelectorAll(".other");
 
-var operator = "";
+const operator = "";
 var left = 0;
 var right = 0;
 
 function operate(operator:string, left:number, right:number):number {
     return operators[operator](left, right);
 }
+
+
+numberButtons.forEach(button => {
+    button.addEventListener("click", (e) => {
+       disp.textContent += (<HTMLElement>e.target).textContent;
+    })
+});
