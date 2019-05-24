@@ -12,11 +12,18 @@ const operators = {
 const disp = document.querySelector(".textarea");
 const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
-const functionButtons = document.querySelectorAll(".other");
+const clearButton = <HTMLElement>document.querySelector(".clear");
 
-const operator = "";
+var operator = "";
 var left = 0;
 var right = 0;
+
+const reset = () => {
+    operator = "";
+    left = 0;
+    right = 0;
+    disp.textContent = "";
+}
 
 function operate(operator:string, left:number, right:number):number {
     return operators[operator](left, right);
@@ -28,3 +35,4 @@ numberButtons.forEach(button => {
        disp.textContent += (<HTMLElement>e.target).textContent;
     })
 });
+clearButton.onclick = reset

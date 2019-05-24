@@ -5,7 +5,7 @@ User stories (implemented ones are striked through)
 
 >The number clicked in the "keypad" should show up in the "display"
 
-2. Clear button clears everything
+2. ~~Clear button clears everything~~
 >Clear button should clear the display, the stored values for left, right and "operator".
 
 3. The "operator" buttons should work
