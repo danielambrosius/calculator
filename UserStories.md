@@ -12,4 +12,5 @@ User stories (implemented ones are striked through)
 >When a operator button is clicked, the number in the display should be stored in the "left" variable, and the user should be able to enter the "right" number.
 
 4. FIx whats broken
->the user should be able to enter multiple digits even though there is a value in the "left" buffer.
+>~~the user should be able to enter multiple digits even though there is a value in the "left" buffer.~~
+>The user should be able to chain together multiple operations *correctly* 
