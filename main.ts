@@ -1,7 +1,3 @@
-const add = (l:number, r:number):number => l + r;
-const subtract = (l:number, r:number):number => l - r;
-const multiply = (l:number, r:number):number => l * r;
-const devide = (l:number, r:number):number => (r != 0)? l / r : NaN;
 const operators = {
     "+": (l:number, r:number):number => l + r,
     "-": (l:number, r:number):number => l - r,
@@ -9,18 +5,21 @@ const operators = {
     "/": (l:number, r:number):number => (r != 0)? l / r : NaN,
 }
 
+// hooks
 const disp = document.querySelector(".textarea");
 const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = <HTMLElement>document.querySelector(".clear");
 const equalsButton = <HTMLElement>document.querySelector(".equals");
 
+// variables
 var operator:string;
 var bBuffer:string;
 var aBuffer:string;
 var computeOnOperator:boolean;
 
 const reset = () => {
+    // resets complete state of the machine
     operator = "";
     bBuffer = "";
     aBuffer = "";
@@ -41,7 +40,11 @@ function operate() {
 
 function handleNumberbutton(input:string) {
     if (aBuffer.includes(".") && input === ".") {return}
+    else if (input === "<") {
+        aBuffer = aBuffer.slice(0, aBuffer.length -1);
+    } else {
         aBuffer += input;
+    }
         display(aBuffer);
 }
 
@@ -86,8 +89,6 @@ function printBuffers() {
     console.log(`B: ${bBuffer}, A: ${aBuffer}, op: ${operator}`);
 }
 
-reset();
-
 window.addEventListener("keydown", (e) => {
     let k:string = e.key;
     if (k in operators) {
@@ -97,6 +98,10 @@ window.addEventListener("keydown", (e) => {
     } else if (k === "Enter") {
         handleEqualsButton();
     } else if (k === "Backspace") {
+        handleNumberbutton("<");
+    } else if (k.toUpperCase() ===  "C") {
         reset();
     }
 })
+
+reset();

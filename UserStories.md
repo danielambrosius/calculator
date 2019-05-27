@@ -22,7 +22,7 @@ User stories (implemented ones are striked through)
 >~~The user should be able to add *only one* decimal seperator to a number.~~
 
 7. Backspace button.
->Backspace should remove the last digit entered
+>~~Backspace should remove the last digit entered~~
 
 8. Styling.
 
