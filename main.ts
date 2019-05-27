@@ -18,12 +18,14 @@ const equalsButton = <HTMLElement>document.querySelector(".equals");
 var operator:string;
 var bBuffer:string;
 var aBuffer:string;
+var computeOnOperator:boolean;
 
 const reset = () => {
     operator = "";
     bBuffer = "";
     aBuffer = "";
     disp.textContent = "";
+    computeOnOperator = true;
 }
 
 function display(buffer:string)  {
@@ -48,14 +50,15 @@ numberButtons.forEach(button => {
 
 operatorButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-        if (aBuffer) {
+        if (aBuffer && computeOnOperator) {
             if (bBuffer) {
                 operate();
             } else {
                 bBuffer = aBuffer;
             }
-            aBuffer = "";
         }
+        aBuffer = "";
+        computeOnOperator = true;
         operator = (<HTMLElement>e.target).textContent;
         display(bBuffer);
     })
@@ -64,6 +67,7 @@ operatorButtons.forEach(button => {
 equalsButton.onclick = (e) => {
     if (aBuffer && bBuffer) {
         operate();
+        computeOnOperator = false;
         display(bBuffer);
     }
 }

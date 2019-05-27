@@ -16,7 +16,7 @@ User stories (implemented ones are striked through)
 >~~The user should be able to chain together multiple operations *correctly*~~
 
 5. Chaining after "equals"
->When the user evaluates an expression using "=", the user shal be able to change operator without the "previous" expression being evaluated
+>~~When the user evaluates an expression using "=", the user shal be able to change operator without the "previous" expression being evaluated~~
 
 6. Decimal seperator.
 >~~The user should be able to add *only one* decimal seperator to a number.~~
