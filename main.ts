@@ -39,7 +39,9 @@ function operate() {
 
 numberButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-        aBuffer += (<HTMLElement>e.target).textContent;
+        let input = (<HTMLElement>e.target).textContent;
+        if (aBuffer.includes(".") && input === ".") {return}
+        aBuffer += input;
         display(aBuffer);
     })
 });

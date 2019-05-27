@@ -19,4 +19,4 @@ User stories (implemented ones are striked through)
 >When the user evaluates an expression using "=", the user shal be able to change operator without the "previous" expression being evaluated
 
 6. Decimal seperator.
->The user should be able to add *only one* decimal seperator to a number.
+>~~The user should be able to add *only one* decimal seperator to a number.~~
