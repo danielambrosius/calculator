@@ -39,32 +39,27 @@ function operate() {
     bBuffer = "" + operators[operator](b, a);
 }
 
-numberButtons.forEach(button => {
-    button.addEventListener("click", (e) => {
-        let input = (<HTMLElement>e.target).textContent;
-        if (aBuffer.includes(".") && input === ".") {return}
+function handleNumberbutton(input:string) {
+    if (aBuffer.includes(".") && input === ".") {return}
         aBuffer += input;
         display(aBuffer);
-    })
-});
+}
 
-operatorButtons.forEach(button => {
-    button.addEventListener("click", (e) => {
-        if (aBuffer && computeOnOperator) {
-            if (bBuffer) {
-                operate();
-            } else {
-                bBuffer = aBuffer;
-            }
+function handleOperatorButton(input:string) {
+    if (aBuffer && computeOnOperator) {
+        if (bBuffer) {
+            operate();
+        } else {
+            bBuffer = aBuffer;
         }
-        aBuffer = "";
-        computeOnOperator = true;
-        operator = (<HTMLElement>e.target).textContent;
-        display(bBuffer);
-    })
-})
+    }
+    aBuffer = "";
+    computeOnOperator = true;
+    operator = input;
+    display(bBuffer);
+}
 
-equalsButton.onclick = (e) => {
+function handleEqualsButton() {
     if (aBuffer && bBuffer) {
         operate();
         computeOnOperator = false;
@@ -72,25 +67,36 @@ equalsButton.onclick = (e) => {
     }
 }
 
+numberButtons.forEach(button => {
+    button.addEventListener("click", (e) => {
+        handleNumberbutton((<HTMLElement>e.target).textContent);
+    })
+});
+
+operatorButtons.forEach(button => {
+    button.addEventListener("click", (e) => {
+        handleOperatorButton((<HTMLElement>e.target).textContent);
+    })
+})
+
+equalsButton.onclick = handleEqualsButton;
+clearButton.onclick = reset;
+
 function printBuffers() {
     console.log(`B: ${bBuffer}, A: ${aBuffer}, op: ${operator}`);
 }
 
-clearButton.onclick = reset
 reset();
 
-// "operator" should check the A buffer, 
-//      if both A and B have values:
-//            the result should be computed and stored in B. Afterwards A should be set to null.
-//      if only A has a value,
-//          it should be moved to B. Afterwards A should be set to null.
-//      The operator should then be assigned.
-//      display the B buffer.
-
-// "Equals" should:
-//      If A and B have values, store the result in B
-//      Display B buffer
-
-// number should:
-//      Append value to A buffer
-//      Display A bufer.
+window.addEventListener("keydown", (e) => {
+    let k:string = e.key;
+    if (k in operators) {
+        handleOperatorButton(k);
+    } else if (parseInt(k) || k === ".") {
+        handleNumberbutton(k);
+    } else if (k === "Enter") {
+        handleEqualsButton();
+    } else if (k === "Backspace") {
+        reset();
+    }
+})

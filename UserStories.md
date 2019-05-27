@@ -20,3 +20,11 @@ User stories (implemented ones are striked through)
 
 6. Decimal seperator.
 >~~The user should be able to add *only one* decimal seperator to a number.~~
+
+7. Backspace button.
+>Backspace should remove the last digit entered
+
+8. Styling.
+
+9. Keyboard support.
+> ~~Keyboard equivalents to the buttons on the calculator should workd~~
