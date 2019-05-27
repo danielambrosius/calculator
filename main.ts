@@ -104,4 +104,4 @@ window.addEventListener("keydown", (e) => {
     }
 })
 
-reset();
+reset(); // initializes calculator.

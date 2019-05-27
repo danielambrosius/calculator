@@ -1,12 +1,12 @@
+body {
+    background-color: antiquewhite;
+}
 .container {
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 75% 25%;
     grid-template-rows: 500px;
     margin: 0 auto;
-    background-color: aquamarine;
 }
-
-
 .numbers {
     display: grid;
     grid-template-columns: repeat(3, calc(100% / 3));
@@ -17,10 +17,27 @@
 }
 
 button {
-    margin: 15px;
+    margin: 5%;
+}
+.textarea {
+    height: 35px;
+    margin: 2% 6px;
+    background-color: white;
 }
 
 button, .textarea {
-    font-size: 20px;
-    border: 5px solid orange;
+    font-size: 35px;
+    border: 2px solid #f831ff;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button.number {
+    background-color: rgb(205, 247, 199);
+}
+button.operator {
+    background-color: rgb(137, 255, 255);
+}
+button.fancy {
+    background-color: rgb(255, 253, 155);
 }
