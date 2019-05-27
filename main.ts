@@ -16,62 +16,75 @@ const clearButton = <HTMLElement>document.querySelector(".clear");
 const equalsButton = <HTMLElement>document.querySelector(".equals");
 
 var operator:string;
-var left:number;
-var right:number;
-var clearDisplay:boolean = false; // does the display need no ble "cleared" next time i enter a number???
+var bBuffer:string;
+var aBuffer:string;
 
 const reset = () => {
     operator = "";
-    left = null;
-    right = null;
+    bBuffer = "";
+    aBuffer = "";
     disp.textContent = "";
-    clearDisplay = true;
 }
 
-function operate(op) {
-    left = operators[op](left, right);
-    disp.textContent = '' + left;
+function display(buffer:string)  {
+    disp.textContent = buffer;
+    printBuffers();
 }
-function handleOperator(myOperator:string) {
-    // operate and store result in left before changing operator.
-    if (left === null) {
-        // if the left buffer is empty, store current number in it
-        left = parseFloat(disp.textContent);
-    } else {
-        if (!clearDisplay || right == null){
-            // If the user has entered a new number, or the right buffer is empty. 
-            right = parseFloat(disp.textContent);
-        }
-        operate(myOperator);
-    }
 
-    operator = myOperator;
-    console.log("left: " + left + ", right: " + right);
+function operate() {
+    let a = parseFloat(aBuffer);
+    let b = parseFloat(bBuffer); 
+    bBuffer = "" + operators[operator](b, a);
 }
 
 numberButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-        if (clearDisplay) {
-            disp.textContent = "";
-            clearDisplay = false;
-        }
-        disp.textContent += (<HTMLElement>e.target).textContent;
+        aBuffer += (<HTMLElement>e.target).textContent;
+        display(aBuffer);
     })
 });
-clearButton.onclick = reset
 
 operatorButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-        // TODO: fix me, so that i don't bug out.
-        clearDisplay = true;
-        handleOperator((<HTMLElement>e.target).textContent)
+        if (aBuffer) {
+            if (bBuffer) {
+                operate();
+            } else {
+                bBuffer = aBuffer;
+            }
+            aBuffer = "";
+        }
+        operator = (<HTMLElement>e.target).textContent;
+        display(bBuffer);
     })
 })
 
 equalsButton.onclick = (e) => {
-    right = parseFloat(disp.textContent);
-    operate(operator);
-    left = null;
-    console.log("left: " + left + ", right: " + right);
+    if (aBuffer && bBuffer) {
+        operate();
+        display(bBuffer);
+    }
 }
+
+function printBuffers() {
+    console.log(`B: ${bBuffer}, A: ${aBuffer}, op: ${operator}`);
+}
+
+clearButton.onclick = reset
 reset();
+
+// "operator" should check the A buffer, 
+//      if both A and B have values:
+//            the result should be computed and stored in B. Afterwards A should be set to null.
+//      if only A has a value,
+//          it should be moved to B. Afterwards A should be set to null.
+//      The operator should then be assigned.
+//      display the B buffer.
+
+// "Equals" should:
+//      If A and B have values, store the result in B
+//      Display B buffer
+
+// number should:
+//      Append value to A buffer
+//      Display A bufer.
