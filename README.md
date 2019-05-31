@@ -3,5 +3,4 @@ This is a really nice in-browser calculator that can do all the simple maths ope
 
 Check it out at [here](https://danielambrosius.github.io/calculator/)
 
-
-here are some changes, hopefully to force github pages to work
+...upon further reflection, it doesn't work really well on the phone.
