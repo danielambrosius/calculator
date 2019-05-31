@@ -25,12 +25,13 @@ const reset = () => {
     bBuffer = "";
     aBuffer = "";
     disp.textContent = "00";
-    disp2.textContent = "Hello, this is my calculator. I like it a lot! I hope you appreciate it as well!"
+    disp2.textContent = "Welcome to my calculator! I hope you enjoy using it :) PS: There's keyboard support."
     computeOnOperator = true;
 }
 
 function display(buffer:string)  {
     disp.textContent = buffer;
+    disp2.textContent = bBuffer + operator + aBuffer + "=?"
     printBuffers();
 }
 

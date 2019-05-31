@@ -38,4 +38,4 @@ User stories (implemented ones are striked through)
 >The displaycontent should not overflow the display.
 
 12. sencodary display:
->The display could have a second compartment that stored the current expression being evauated. could be as simple as `<a><operator><b>`
+>~~The display could have a second compartment that stored the current expression being evauated. could be as simple as `<a><operator><b>`~~
