@@ -26,13 +26,16 @@ User stories (implemented ones are striked through)
 
 8. Styling.
 >~~The calculator should look good.~~~
->The calculator should look *really* good
+>~~The calculator should look *really* good~~
 
 9. Keyboard support.
 > ~~Keyboard equivalents to the buttons on the calculator should workd~~
 
 10. Smartphone support:
->When displayed on a smartphone screen, the app should fill the screen and work with toutch input.
+>~~When displayed on a smartphone screen, the app should fill the screen and work with toutch input.~~
 
 11. rounding:
 >The displaycontent should not overflow the display.
+
+12. sencodary display:
+>The display could have a second compartment that stored the current expression being evauated. could be as simple as `<a><operator><b>`

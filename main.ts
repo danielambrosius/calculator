@@ -7,6 +7,7 @@ const operators = {
 
 // hooks
 const disp = document.querySelector(".textarea");
+const disp2 = document.querySelector(".textarea2");
 const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = <HTMLElement>document.querySelector(".clear");
@@ -23,7 +24,8 @@ const reset = () => {
     operator = "";
     bBuffer = "";
     aBuffer = "";
-    disp.textContent = "";
+    disp.textContent = "00";
+    disp2.textContent = "Hello, this is my calculator. I like it a lot! I hope you appreciate it as well!"
     computeOnOperator = true;
 }
 
